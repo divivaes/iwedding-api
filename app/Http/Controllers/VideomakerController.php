@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\VideomakerResource;
 use App\Videomaker;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,8 @@ class VideomakerController extends Controller
      */
     public function index()
     {
-        //
+        return VideomakerResource::collection(Videomaker::latest()->get());
     }
-
     /**
      * Display the specified resource.
      *
@@ -25,7 +25,7 @@ class VideomakerController extends Controller
      */
     public function show(Videomaker $videomaker)
     {
-        //
+        return new VideomakerResource($videomaker);
     }
 
 }

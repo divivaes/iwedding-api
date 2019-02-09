@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StaffResource;
+use App\User;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -13,28 +15,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return StaffResource::collection(User::latest()->get());
     }
 
     /**
@@ -45,40 +26,13 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $slug = ucwords(str_replace('-', ' ', $id));
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $user = User::where('name', $slug)->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $user[0]->avatar = "http:127.0.0.1:8001/storage/users/profile/" . $user[0]->avatar;
+        $user[0]->role_id = $user[0]->role->name;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $user;
     }
 }
