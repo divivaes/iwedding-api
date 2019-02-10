@@ -27,3 +27,4 @@ Route::apiResource('/restaurant', 'RestaurantController');
 Route::apiResource('/staff', 'StaffController');
 Route::apiResource('/videomaker', 'VideomakerController');
 Route::post('/application/store', 'ApplicationController@store')->middleware('guest');
+Route::get('/page/information', 'PageController@index')->middleware('guest');
