@@ -17,6 +17,7 @@ class RestaurantResource extends JsonResource
         $url = "http://127.0.0.1:8001/storage/restaurants/";
 
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
             'address' => $this->address,

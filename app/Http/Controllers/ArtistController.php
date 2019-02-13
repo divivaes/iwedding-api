@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\ArtistGenre;
 use App\Http\Resources\ArtistResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArtistController extends Controller
 {
@@ -15,7 +17,9 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        return ArtistResource::collection(Artist::latest()->get());
+        $artists = Artist::latest()->with('genres')->get();
+
+        return ArtistResource::collection($artists);
     }
 
 
@@ -27,6 +31,9 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
+        $art = ArtistGenre::where('artist_id', $artist['id'])->with('genre')->get();
+        $artist['genres'] = $art;
+
         return new ArtistResource($artist);
     }
 

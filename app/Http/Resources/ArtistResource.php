@@ -15,14 +15,15 @@ class ArtistResource extends JsonResource
     public function toArray($request)
     {
         $url = "http://127.0.0.1:8001/storage/users/artists/";
-
+        $genres = [];
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
             'phone' => $this->phone,
-            'genre' => $this->genre,
             'duration' => $this->duration,
             'price' => $this->price,
+            'genres' => $this->genres,
             'avatar' => $url . $this->avatar,
             'description' => $this->description,
             'created' => $this->created_at->diffForHumans()

@@ -24,15 +24,10 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $staff)
     {
-        $slug = ucwords(str_replace('-', ' ', $id));
+        $user = User::where('slug', $staff)->with('role')->get();
 
-        $user = User::where('name', $slug)->get();
-
-        $user[0]->avatar = "http:127.0.0.1:8001/storage/users/profile/" . $user[0]->avatar;
-        $user[0]->role_id = $user[0]->role->name;
-
-        return $user;
+        return new StaffResource($staff);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\VideomakerResource;
 use App\Videomaker;
+use App\VideomakerGenre;
 use Illuminate\Http\Request;
 
 class VideomakerController extends Controller
@@ -15,7 +16,7 @@ class VideomakerController extends Controller
      */
     public function index()
     {
-        return VideomakerResource::collection(Videomaker::latest()->get());
+        return VideomakerResource::collection(Videomaker::latest()->with('genres')->get());
     }
     /**
      * Display the specified resource.
@@ -25,6 +26,9 @@ class VideomakerController extends Controller
      */
     public function show(Videomaker $videomaker)
     {
+        $genre = VideomakerGenre::where('videomaker_id', $videomaker['id'])->with('genre')->get();
+        $videomaker['genres'] = $genre;
+
         return new VideomakerResource($videomaker);
     }
 

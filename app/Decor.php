@@ -14,4 +14,9 @@ class Decor extends Model
     {
         return 'slug';
     }
+
+    public function genres()
+    {
+        return $this->hasMany(DecorGenre::class, 'decor_id');
+    }
 }

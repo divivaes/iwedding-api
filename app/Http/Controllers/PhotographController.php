@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PhotographResource;
 use App\Photograph;
+use App\PhotographGenre;
 use Illuminate\Http\Request;
 
 class PhotographController extends Controller
@@ -15,7 +16,7 @@ class PhotographController extends Controller
      */
     public function index()
     {
-        return PhotographResource::collection(Photograph::latest()->get());
+        return PhotographResource::collection(Photograph::latest()->with('genres')->get());
     }
 
     /**
@@ -26,6 +27,9 @@ class PhotographController extends Controller
      */
     public function show(Photograph $photograph)
     {
+        $genre = PhotographGenre::where('photograph_id', $photograph['id'])->with('genre')->get();
+        $photograph['genres'] = $genre;
+        
         return new PhotographResource($photograph);
     }
 

@@ -14,4 +14,9 @@ class Videomaker extends Model
     {
         return 'slug';
     }
+
+    public function genres()
+    {
+        return $this->hasMany(VideomakerGenre::class, 'videomaker_id');
+    }
 }

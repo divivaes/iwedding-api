@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Decor;
+use App\DecorGenre;
 use App\Http\Resources\DecorResource;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class DecorController extends Controller
      */
     public function index()
     {
-        return DecorResource::collection(Decor::latest()->get());
+        return DecorResource::collection(Decor::latest()->with('genres')->get());
     }
 
     /**
@@ -26,6 +27,9 @@ class DecorController extends Controller
      */
     public function show(Decor $decor)
     {
+        $genre = DecorGenre::where('decor_id', $decor['id'])->with('genre')->get();
+        $decor['genres'] = $genre;
+
         return new DecorResource($decor);
     }
 }

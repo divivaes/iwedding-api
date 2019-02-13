@@ -10,5 +10,13 @@ class NewsTag extends Model
 
     protected $guarded = [];
 
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
+    }
 
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

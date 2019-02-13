@@ -17,14 +17,29 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-
-Route::apiResource('/artist', 'ArtistController');
-Route::apiResource('/article', 'ArticleController');
-Route::apiResource('/decor', 'DecorController');
-Route::apiResource('/gallery', 'GalleryController');
-Route::apiResource('/photograph', 'PhotographController');
-Route::apiResource('/restaurant', 'RestaurantController');
-Route::apiResource('/staff', 'StaffController');
-Route::apiResource('/videomaker', 'VideomakerController');
+// Arist
+Route::get('/artist', 'ArtistController@index');
+Route::get('/artist/{artist}', 'ArtistController@show');
+// Article
+Route::get('/article', 'ArticleController@index');
+Route::get('/article/{article}', 'ArticleController@index');
+// Decor
+Route::get('/decor', 'DecorController@index');
+Route::get('/decor/{decor}', 'DecorController@show');
+// Gallery
+Route::get('/gallery', 'GalleryController@index');
+// Photograph
+Route::get('/photograph', 'PhotographController@index');
+Route::get('/photograph/{photograph}', 'PhotographController@show');
+// Restaurant
+Route::get('/restaurant', 'RestaurantController@index');
+Route::get('/restaurant/{restaurant}', 'RestaurantController@show');
+// Staff
+Route::get('/staff', 'StaffController@index');
+Route::get('/staff/{staff}', 'StaffController@show');
+// Videomaker
+Route::get('/videomaker', 'VideomakerController@index');
+Route::get('/videomaker/{videomaker}', 'VideomakerController@show');
+Route::apiResource('/genre', 'GenreController');
 Route::post('/application/store', 'ApplicationController@store')->middleware('guest');
 Route::get('/page/information', 'PageController@index')->middleware('guest');

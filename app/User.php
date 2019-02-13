@@ -49,6 +49,11 @@ class User extends Authenticatable
 
     public function getRouteKeyName()
     {
-        return 'id' || 'slug';
+        return 'slug';
+    }
+
+    public function getPathAttribute()
+    {
+        return "/our-team/member/".str_slug("$this->slug");
     }
 }
