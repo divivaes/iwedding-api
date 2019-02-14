@@ -19,10 +19,11 @@ use Illuminate\Http\Request;
 
 // Arist
 Route::get('/artist', 'ArtistController@index');
+Route::get('/artist/demo', 'ArtistController@demo');
 Route::get('/artist/{artist}', 'ArtistController@show');
 // Article
 Route::get('/article', 'ArticleController@index');
-Route::get('/article/{article}', 'ArticleController@index');
+Route::get('/article/{article}', 'ArticleController@show');
 // Decor
 Route::get('/decor', 'DecorController@index');
 Route::get('/decor/{decor}', 'DecorController@show');

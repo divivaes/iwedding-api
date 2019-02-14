@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Genre;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PhotographResource extends JsonResource
@@ -17,12 +18,18 @@ class PhotographResource extends JsonResource
         $url = "http://127.0.0.1:8001/storage/users/photographs/";
         $genres = [];
 
+        foreach ($this->genres as $item)
+        {
+            $genre = Genre::find($item->genre_id);
+            array_push($genres, $genre->name);
+        }
+
         return [
             'name' => $this->name,
             'slug' => $this->slug,
             'phone' => $this->phone,
             'price' => $this->price,
-            'genres' => $this->genres,
+            'genres' => $genres,
             'avatar' => $url . $this->avatar,
             'created' => $this->created_at->diffForHumans()
         ];

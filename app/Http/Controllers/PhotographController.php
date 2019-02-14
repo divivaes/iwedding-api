@@ -16,7 +16,7 @@ class PhotographController extends Controller
      */
     public function index()
     {
-        return PhotographResource::collection(Photograph::latest()->with('genres')->get());
+        return PhotographResource::collection(Photograph::latest()->get());
     }
 
     /**
@@ -27,9 +27,6 @@ class PhotographController extends Controller
      */
     public function show(Photograph $photograph)
     {
-        $genre = PhotographGenre::where('photograph_id', $photograph['id'])->with('genre')->get();
-        $photograph['genres'] = $genre;
-        
         return new PhotographResource($photograph);
     }
 

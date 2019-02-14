@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Genre;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ArtistResource extends JsonResource
@@ -16,6 +17,13 @@ class ArtistResource extends JsonResource
     {
         $url = "http://127.0.0.1:8001/storage/users/artists/";
         $genres = [];
+
+        foreach ($this->genres as $item)
+        {
+            $genre = Genre::find($item->genre_id);
+            array_push($genres, $genre->name);
+        }
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -23,7 +31,7 @@ class ArtistResource extends JsonResource
             'phone' => $this->phone,
             'duration' => $this->duration,
             'price' => $this->price,
-            'genres' => $this->genres,
+            'genres' => $genres,
             'avatar' => $url . $this->avatar,
             'description' => $this->description,
             'created' => $this->created_at->diffForHumans()

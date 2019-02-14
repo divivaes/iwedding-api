@@ -17,7 +17,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::latest()->with('genres')->get();
+        $artists = Artist::latest()->get();
 
         return ArtistResource::collection($artists);
     }
@@ -31,9 +31,6 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        $art = ArtistGenre::where('artist_id', $artist['id'])->with('genre')->get();
-        $artist['genres'] = $art;
-
         return new ArtistResource($artist);
     }
 
