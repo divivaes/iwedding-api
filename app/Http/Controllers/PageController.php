@@ -50,7 +50,7 @@ class PageController extends Controller
 
     public static function getMetas()
     {
-        $page = Page::where('value', 'Мета ключи')->andWhere('value', 'Мета описание')->get();
+        $page = Page::where('value', 'Мета ключи')->orWhere('value', 'Мета описание')->get();
 
         return $page;
     }
