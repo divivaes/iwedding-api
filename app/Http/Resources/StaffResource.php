@@ -14,7 +14,7 @@ class StaffResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/users/profile/";
+        $url = "https://admin.iwedding.kz/storage/users/profile/";
         $role = [];
         return [
             'name' => $this->name,

@@ -15,7 +15,7 @@ class PhotographResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/users/photographs/";
+        $url = "https://admin.iwedding.kz/storage/users/photographs/";
         $genres = [];
 
         foreach ($this->genres as $item)

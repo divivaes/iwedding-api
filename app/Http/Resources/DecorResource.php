@@ -15,7 +15,7 @@ class DecorResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/decors/";
+        $url = "https://admin.iwedding.kz/storage/decors/";
         $genres = [];
 
         foreach ($this->genres as $item)

@@ -15,7 +15,7 @@ class VideomakerResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/users/videomakers/";
+        $url = "https://admin.iwedding.kz/storage/users/videomakers/";
         $genres = [];
 
         foreach ($this->genres as $item)

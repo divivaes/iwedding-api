@@ -14,7 +14,7 @@ class GalleryResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/gallery/";
+        $url = "https://admin.iwedding.kz/storage/gallery/";
 
         return [
             'photo_url' => $url . $this->photo_url,

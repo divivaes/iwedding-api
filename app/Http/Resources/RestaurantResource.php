@@ -14,7 +14,7 @@ class RestaurantResource extends JsonResource
      */
     public function toArray($request)
     {
-        $url = "http://127.0.0.1:8001/storage/restaurants/";
+        $url = "https://admin.iwedding.kz/storage/restaurants/";
 
         return [
             'id' => $this->id,
