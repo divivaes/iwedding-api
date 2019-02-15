@@ -44,3 +44,10 @@ Route::get('/videomaker/{videomaker}', 'VideomakerController@show');
 Route::apiResource('/genre', 'GenreController');
 Route::post('/application/store', 'ApplicationController@store')->middleware('guest');
 Route::get('/page/information', 'PageController@index')->middleware('guest');
+Route::get('/page/phone', 'PageController@getPhone')->middleware('guest');
+Route::get('/page/email', 'PageController@getEmail')->middleware('guest');
+Route::get('/page/address', 'PageController@getAddress')->middleware('guest');
+Route::get('/page/metas', 'PageController@getMetas')->middleware('guest');
+Route::get('/page/slider', 'PageController@getImages')->middleware('guest');
+Route::get('/page/urls', 'PageController@getUrls')->middleware('guest');
+
