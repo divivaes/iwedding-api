@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\RestaurantResource;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -15,7 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return RestaurantResource::collection(Restaurant::latest()->get());
+        $restaurants = Restaurant::orderBy('sort', 'asc')->get();
+
+        return RestaurantResource::collection($restaurants);
     }
     /**
      * Display the specified resource.

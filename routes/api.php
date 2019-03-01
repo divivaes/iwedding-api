@@ -41,7 +41,12 @@ Route::get('/staff/{staff}', 'StaffController@show');
 // Videomaker
 Route::get('/videomaker', 'VideomakerController@index');
 Route::get('/videomaker/{videomaker}', 'VideomakerController@show');
-Route::apiResource('/genre', 'GenreController');
+// Genres for [artist, decor, photograph, restaurant, videomaker]
+Route::get('/artist-genres', 'GenreController@artist_genres');
+Route::get('/decor-genres', 'GenreController@decor_genres');
+Route::get('/photograph-genres', 'GenreController@photograph_genres');
+Route::get('/videomaker-genres', 'GenreController@videomaker_genres');
+
 Route::post('/application/store', 'ApplicationController@store')->middleware('guest');
 Route::get('/page/information', 'PageController@index')->middleware('guest');
 Route::get('/page/phone', 'PageController@getPhone')->middleware('guest');

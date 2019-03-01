@@ -31,6 +31,7 @@ class VideomakerResource extends JsonResource
             'phone' => $this->phone,
             'price' => $this->price,
             'genres' => $genres,
+            'sort' => $this->sort,
             'device' => $this->device,
             'avatar' => $url . $this->avatar,
             'created_at' => $this->created_at->diffForHumans()

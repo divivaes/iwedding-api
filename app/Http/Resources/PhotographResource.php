@@ -29,6 +29,7 @@ class PhotographResource extends JsonResource
             'slug' => $this->slug,
             'phone' => $this->phone,
             'price' => $this->price,
+            'sort' => $this->sort,
             'genres' => $genres,
             'avatar' => $url . $this->avatar,
             'created' => $this->created_at->diffForHumans()

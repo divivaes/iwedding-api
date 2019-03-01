@@ -29,6 +29,7 @@ class ArtistResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'phone' => $this->phone,
+            'sort' => $this->sort,
             'duration' => $this->duration,
             'price' => $this->price,
             'genres' => $genres,

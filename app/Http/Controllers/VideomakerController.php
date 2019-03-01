@@ -16,7 +16,7 @@ class VideomakerController extends Controller
      */
     public function index()
     {
-        return VideomakerResource::collection(Videomaker::latest()->get());
+        return VideomakerResource::collection(Videomaker::orderBy('sort', 'asc')->get());
     }
     /**
      * Display the specified resource.

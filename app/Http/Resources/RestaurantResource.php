@@ -24,6 +24,7 @@ class RestaurantResource extends JsonResource
             'phone' => $this->phone,
             'description' => $this->description,
             'space' => $this->space,
+            'sort' => $this->sort,
             'price' => $this->price,
             'poster' => $url . $this->poster,
             'created' => $this->created_at->diffForHumans()

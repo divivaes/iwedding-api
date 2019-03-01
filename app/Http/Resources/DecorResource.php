@@ -29,6 +29,7 @@ class DecorResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'phone' => $this->phone,
+            'sort' => $this->sort,
             'price' => $this->price,
             'genres' => $genres,
             'avatar' => $url . $this->avatar,

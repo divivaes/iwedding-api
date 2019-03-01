@@ -17,7 +17,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::latest()->get();
+        $artists = Artist::orderBy('sort', 'asc')->get();
 
         return ArtistResource::collection($artists);
     }

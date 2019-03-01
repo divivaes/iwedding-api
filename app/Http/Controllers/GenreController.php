@@ -13,9 +13,36 @@ class GenreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function artist_genres()
     {
-        return GenreResource::collection(Genre::latest()->get());
+        $genres = Genre::where('type', 'Артист')->get();
+
+        return GenreResource::collection($genres);
     }
+
+    public function decor_genres()
+    {
+        $genres = Genre::where('type', 'Обслуживание')->get();
+
+        return GenreResource::collection($genres);
+    }
+
+    public function photograph_genres()
+    {
+        $genres = Genre::where('type', 'Фотограф')->get();
+
+        return GenreResource::collection($genres);
+    }
+
+
+    public function videomaker_genres()
+    {
+        $genres = Genre::where('type', 'Видеограф')->get();
+
+        return GenreResource::collection($genres);
+    }
+
+
 
 }

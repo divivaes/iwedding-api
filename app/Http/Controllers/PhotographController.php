@@ -16,7 +16,7 @@ class PhotographController extends Controller
      */
     public function index()
     {
-        return PhotographResource::collection(Photograph::latest()->get());
+        return PhotographResource::collection(Photograph::orderBy('sort', 'asc')->get());
     }
 
     /**

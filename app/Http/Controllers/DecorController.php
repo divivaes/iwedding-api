@@ -18,7 +18,7 @@ class DecorController extends Controller
      */
     public function index()
     {
-        return DecorResource::collection(Decor::latest()->get());
+        return DecorResource::collection(Decor::orderBy('sort', 'asc')->get());
     }
 
     /**
