@@ -31,4 +31,11 @@ class DecorController extends Controller
     {
         return new DecorResource($decor);
     }
+
+    public function search($key)
+    {
+        $decors = Decor::where('name', 'LIKE', '%' . $key . '%')->get();
+
+        return DecorResource::collection($decors);
+    }
 }

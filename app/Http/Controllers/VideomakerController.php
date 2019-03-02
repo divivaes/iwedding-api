@@ -29,4 +29,11 @@ class VideomakerController extends Controller
         return new VideomakerResource($videomaker);
     }
 
+    public function search($key)
+    {
+        $videomakers = Videomaker::where('name', 'LIKE', '%' . $key . '%')->get();
+
+        return VideomakerResource::collection($videomakers);
+    }
+
 }

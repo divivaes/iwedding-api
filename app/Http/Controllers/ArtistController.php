@@ -34,4 +34,12 @@ class ArtistController extends Controller
         return new ArtistResource($artist);
     }
 
+    public function search($key)
+    {
+        $artists = Artist::where('name', 'LIKE', '%' . $key . '%')->get();
+
+        return ArtistResource::collection($artists);
+    }
+
+
 }

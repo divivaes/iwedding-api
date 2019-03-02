@@ -31,4 +31,11 @@ class RestaurantController extends Controller
         return new RestaurantResource($restaurant);
     }
 
+    public function search($key)
+    {
+        $restaurants = Restaurant::where('name', 'LIKE', '%' . $key . '%')->get();
+
+        return RestaurantResource::collection($restaurants);
+    }
+
 }

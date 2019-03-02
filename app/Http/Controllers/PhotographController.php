@@ -30,4 +30,11 @@ class PhotographController extends Controller
         return new PhotographResource($photograph);
     }
 
+    public function search($key)
+    {
+        $photographs = Photograph::where('name', 'LIKE', '%' . $key . '%')->get();
+
+        return PhotographResource::collection($photographs);
+    }
+
 }
